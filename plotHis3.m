@@ -74,15 +74,15 @@ amin=amin-0.05*aw;
 amax=amax+0.05*aw;
 bmin=bmin-0.05*bw;
 bmax=bmax+0.05*bw;
-xyz=reshape(xyHis,3*n,loop);%为方便画出智能体的历史轨迹，对记录智能体历史位置的矩阵进行变型
-hwait=waitbar(0,'进行中>>>>>>>>>>');
+xyz=reshape(xyHis,3*n,loop);%为方便画出智能体的历史轨迹，对记录智能体历史位置的矩阵进行变�?
+hwait=waitbar(0,'>>>>>>>>>>');
 for k=1:loop
     plot3(xyHis(1,:,1),xyHis(2,:,1),xyHis(3,:,1),'kx')
     hold on
     plot3(xyHis(1,1,k),xyHis(2,1,k),xyHis(3,1,k),'rp')
     plot3(xyHis(1,2:end,k),xyHis(2,2:end,k),xyHis(3,2:end,k),'bo', 'MarkerFaceColor','b','MarkerSize',5)
     
-    tail=tailLength;%“尾巴的长度”
+    tail=tailLength;%“尾巴的长度�?
     if k<=tailLength || tailLength<0
         plot3(xyz(1,1:k),xyz(2,1:k),xyz(3,1:k),'m--')
     else
@@ -95,7 +95,7 @@ for k=1:loop
             plot3(xyz(3*i-2,k-tail:k),xyz(3*i-1,k-tail:k),xyz(3*i,k-tail:k),'c-')
         end
     end
-    hold off%关闭“叠加”绘图模式
+    hold off%关闭“叠加�?�绘图模�?
     title(['time=',num2str(k/loop*ts)]);
     
     axis([amin amax bmin bmax cmin cmax]);%固定绘制区域
@@ -109,7 +109,7 @@ for k=1:loop
     
 %     axis equal
     %pause(0.1)
-    waitbar(k/loop,hwait,'优化进行中');
+    waitbar(k/loop,hwait,'simulating');
 end
 close(hwait);
 xlabel('x')
