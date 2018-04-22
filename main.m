@@ -1,11 +1,4 @@
-% This source code is written to implement flight simulations for one quadrotor
-% Author: wjxjmj
-% Email: wjxjmj@126.com
-% Open Source License: GPL
-
-% shall we go!
-clear all
-clc
+clear,clc,close all
 % simulation paraments set up
 dt=0.01;
 stime=50;
@@ -13,16 +6,16 @@ loop=stime/dt;
 
 % flocking paraments set up
 d=3;
-n=1;
 
-% init state
-s=zeros(12,n);
-s(1:3,:)=unifrnd(-0,0,[3,n]);
-s(4:6,:)=unifrnd(-0,0,[3,n]);
-s(7,:)=unifrnd(-0.0*pi,0.0*pi,[1,n]);
-s(8,:)=unifrnd(-0.0*pi,0.0*pi,[1,n]);
-s(9,:)=unifrnd(-0.0*pi,0.0*pi,[1,n]);
-x=s(1);y=s(2);z=s(3);
+
+% ³õÊ¼×´Ì¬
+s=zeros(12,1);
+s(1:3,:)=[0;0;0];% r
+s(4:6,:)=[0;0;0];% v
+s(7,:)=0;
+s(8,:)=0;
+s(9,:)=0;
+rx=s(1);ry=s(2);rz=s(3);
 vx=s(4);vy=s(5);vz=s(6);
 phi=s(7);theta=s(8);psi=s(9);
 vphi=s(10);vtheta=s(11);vpsi=s(12);
@@ -50,11 +43,11 @@ para.k6=0.1;
 para.omegaMax=330;
 
 % history capture
-xyHis=zeros(d,n+1,loop+1);
+xyHis=zeros(d,2,loop+1);
 xyHis(:,:,1)=[xl s(1:3)];
 
 %simulation start
-hwait=waitbar(0,'>>>>>>>>>>');
+
 
 sp=1;
 omegaHis=zeros(4,loop);
@@ -92,10 +85,8 @@ for t=1:loop
     %recodrd the position of quadrotor at time t/loop*stime
     xyHis(:,:,t+1)=[xl s(1:3)];
     
-    waitbar(t/loop,hwait,'simulating');
 end
 
-close(hwait);
 %show the animation of the flight process
 figure(1)
 plotHis3(xyHis,dt,-1,200)

@@ -1,7 +1,3 @@
-% This source code is written to implement a controller of a quadrotor
-% Author: wjxjmj
-% Email: wjxjmj@126.com
-% Open Source License: GPL
 function omega=quadrotor_controller(s,xl,vl,psil,para,k1,k2)
 s=real(s);
 x=s(1);y=s(2);z=s(3);

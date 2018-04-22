@@ -1,7 +1,3 @@
-% This source code is written to implement the dynamics of a quadrotor
-% Author: wjxjmj
-% Email: wjxjmj@126.com
-% Open Source License: GPL
 function s=quadrotor_kinematics(s,omega,para,dt)
 
 x=s(1);y=s(2);z=s(3);

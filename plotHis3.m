@@ -1,9 +1,3 @@
-% This source code is written to implement the animation of the flying
-% process
-% Author: wjxjmj
-% Email: wjxjmj@126.com
-% Open Source License: GPL
-
 % parameters:
 %  xHis:tensor in [d,n,loop] where d is the dimension and is fixed at 3 , n as
 %       thenumber of quadrotors. It should be noted that n = 2 if you have 
@@ -75,7 +69,7 @@ amax=amax+0.05*aw;
 bmin=bmin-0.05*bw;
 bmax=bmax+0.05*bw;
 xyz=reshape(xyHis,3*n,loop);%为方便画出智能体的历史轨迹，对记录智能体历史位置的矩阵进行变�?
-hwait=waitbar(0,'>>>>>>>>>>');
+% hwait=waitbar(0,'>>>>>>>>>>');
 for k=1:loop
     plot3(xyHis(1,:,1),xyHis(2,:,1),xyHis(3,:,1),'kx')
     hold on
@@ -103,15 +97,15 @@ for k=1:loop
         if k/loop*ts>=tt
             break
         end
-    end
-
+	end
+	drawnow
       
     
 %     axis equal
     %pause(0.1)
-    waitbar(k/loop,hwait,'simulating');
+%     waitbar(k/loop,hwait,'simulating');
 end
-close(hwait);
+% close(hwait);
 xlabel('x')
 ylabel('y')
 zlabel('z')
