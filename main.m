@@ -54,22 +54,23 @@ omegaHis=zeros(4,loop);
 for t=1:loop
     
     %leader information generator
-    if t/loop<0.1
-        al=([0;0;sp]-vl);
-    elseif t/loop<0.2
-        al=([sp;0;0]-vl);
-    elseif t/loop<0.4
-        al=([0;sp;0]-vl);
-    elseif t/loop<0.6
-        al=([-sp;0;0]-vl);
-    elseif t/loop<0.8
-        al=([0;-sp;0]-vl);
-    elseif t/loop<0.9
-        al=([sp;0;sp]-vl);
-    else
-        al=([sp;0;0]-vl);
-    end
+%     if t/loop<0.1
+%         al=([0;0;sp]-vl);
+%     elseif t/loop<0.2
+%         al=([sp;0;0]-vl);
+%     elseif t/loop<0.4
+%         al=([0;sp;0]-vl);
+%     elseif t/loop<0.6
+%         al=([-sp;0;0]-vl);
+%     elseif t/loop<0.8
+%         al=([0;-sp;0]-vl);
+%     elseif t/loop<0.9
+%         al=([sp;0;sp]-vl);
+%     else
+%         al=([sp;0;0]-vl);
+% 	end
 
+	al = [5*sin(t);5*cos(t);0.01];
     vl=vl+dt*al;
     xl=xl+dt*vl;
 
